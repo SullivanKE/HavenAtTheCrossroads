@@ -22,9 +22,26 @@ namespace HavenAtTheCrossroads.Controllers
             s.Characters.Add(new());
             return View("Add", s);
         }
+        [Route("DelChar/{index}")]
+        public IActionResult DelChar(int index, SessionModel s)
+        {
+
+            s.Characters.RemoveAt(index);
+            ModelState.Clear();
+            return View("Add", s);
+        }
         public IActionResult AddAdhoc(SessionModel s)
         {
             s.AdHocs.Add(new());
+            return View("Add", s);
+        }
+
+        [Route("DelAdhoc/{index}")]
+        public IActionResult DelAdhoc(int index, SessionModel s)
+        {
+            
+            s.AdHocs.RemoveAt(index);
+            ModelState.Clear();
             return View("Add", s);
         }
         public IActionResult AddMonster(SessionModel s)
@@ -33,42 +50,18 @@ namespace HavenAtTheCrossroads.Controllers
             return View("Add", s);
         }
 
+        [Route("DelMonster/{index}")]
+        public IActionResult DelMonster(int index, SessionModel s)
+        {
+            s.Monsters.RemoveAt(index);
+            ModelState.Clear();
+            return View("Add", s);
+        }
+
         public IActionResult Edit()
         {
             SessionModel s = new();
-            s.SessionId = 1;
-            s.DM = "Katie";
-            s.Gold = 10;
-            s.Exp = 20;
-
-            CharacterModel c = new();
-            c.CharId = 1;
-            c.UserId = 1;
-            c.Name = "Eranir";
-            c.ConcurrencyId = 1;
-
-            SessionItemModel sim = new();
-            sim.SessionId = 1;
-            sim.Name = "Test data";
-            sim.Value = 1;
-            sim.Type = SessionItemModel.ItemType.Monster;
-
-            SessionItemModel sim2 = new();
-            sim2.SessionId = 1;
-            sim2.Name = "Test data";
-            sim2.Value = 1;
-            sim2.Type = SessionItemModel.ItemType.Adhoc;
-
-            SessionItemModel sim3 = new();
-            sim3.SessionId = 1;
-            sim3.Name = "Test data";
-            sim3.Value = 1;
-            sim3.Type = SessionItemModel.ItemType.Item;
-
-            s.Characters.Add(c);
-            s.Monsters.Add(sim);
-            s.AdHocs.Add(sim2);
-            s.Items.Add(sim3);
+            
 
             return View(s);
         }
