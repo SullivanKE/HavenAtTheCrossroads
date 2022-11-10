@@ -1,5 +1,6 @@
 ﻿using HavenAtTheCrossroads.Models;
 using Microsoft.AspNetCore.Mvc;
+using HavenAtTheCrossroads;
 
 namespace HavenAtTheCrossroads.Controllers
 {
@@ -13,7 +14,23 @@ namespace HavenAtTheCrossroads.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            SessionModel s = new();
+            return View(s);
+        }
+        public IActionResult AddChar(SessionModel s)
+        {
+            s.Characters.Add(new());
+            return View("Add", s);
+        }
+        public IActionResult AddAdhoc(SessionModel s)
+        {
+            s.AdHocs.Add(new());
+            return View("Add", s);
+        }
+        public IActionResult AddMonster(SessionModel s)
+        {
+            s.Monsters.Add(new());
+            return View("Add", s);
         }
 
         public IActionResult Edit()

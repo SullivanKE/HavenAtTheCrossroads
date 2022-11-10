@@ -22,6 +22,51 @@
                 <input asp-for="DM" class="form-control" />
                 <span asp-validation-for="DM" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+            @for (int i = 0; i < Model.Characters.Count; i++)
+            {
+                
+                    <div class="row">
+                        <label asp-for="Characters[i].Name" class="control-label">Character Name</label>
+                        <input asp-for="Characters[i].Name" class="form-control" />
+                        <label asp-for="Characters[i].UserId" class="control-label">Player Name</label>
+                        <input asp-for="Characters[i].UserId" class="form-control" />
+                    </div>
+                
+            }
+            <input method="post" type="submit" class="btn btn-info" value="Add Character" name="AddChar" asp-action="addChar" />
+            </div>
+
+
+            <div class="form-group">
+            @for (int i = 0; i < Model.AdHocs.Count; i++)
+            {
+                
+                    <label asp-for="AdHocs[i].Name" class="control-label">Adhoc Name</label>
+                    <input asp-for="AdHocs[i].Name" class="form-control" />
+                    <label asp-for="AdHocs[i].Value" class="control-label">Experience</label>
+                    <input asp-for="AdHocs[i].Value" class="form-control" />
+                
+            }
+            <input method="post" type="submit" class="btn btn-info" value="Add Adhoc" name="AddAdhoc" asp-action="addAdhoc" />
+            </div>
+
+            <div class="form-group">
+            @for (int i = 0; i < Model.Monsters.Count; i++)
+            {
+                
+                    <label asp-for="Monsters[i].Name" class="control-label">Monster</label>
+                    <input asp-for="Monsters[i].Name" class="form-control" />
+                    <label asp-for="Monsters[i].Value" class="control-label">CR</label>
+                    <input asp-for="Monsters[i].Value" class="form-control" />
+                    <label asp-for="Monsters[i].Value" class="control-label">Count</label>
+                    <input asp-for="Monsters[i].Value" class="form-control" />
+                
+            }
+            <input method="post" type="submit" class="btn btn-info" value="Add Monster" name="AddMonster" asp-action="addMonster" />
+            </div>
+
             <div class="form-group">
                 <label asp-for="Gold" class="control-label"></label>
                 <input asp-for="Gold" class="form-control" />
