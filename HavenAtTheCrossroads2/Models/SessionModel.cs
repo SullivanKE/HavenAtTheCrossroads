@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HavenAtTheCrossroads.Models
 {
     public class SessionModel
     {
+        [Key]
         public int SessionId { get; set; }
         public string DM { get; set; } = "";
 
@@ -14,6 +17,8 @@ namespace HavenAtTheCrossroads.Models
 
         public int Gold { get; set; }
         public int Exp { get; set; }
+        public DateTime Date { get; set; }
+        public string InGameDate { get; set; }
 
         public int ConcurrencyId { get; set; }
 

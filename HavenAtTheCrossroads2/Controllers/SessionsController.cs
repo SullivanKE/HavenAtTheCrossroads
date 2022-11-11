@@ -2,11 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using HavenAtTheCrossroads;
 using System.Collections.Generic;
+using System;
 
 namespace HavenAtTheCrossroads.Controllers
 {
     public class SessionsController : Controller
     {
+        HavenDbContext context;
+
+        public SessionsController (HavenDbContext context)
+        {
+            this.context = context;
+        }
+
         public IActionResult Index()
         {
             List<SessionModel> s = new List<SessionModel>();
@@ -16,8 +24,16 @@ namespace HavenAtTheCrossroads.Controllers
         public IActionResult Add()
         {
             SessionModel s = new SessionModel();
-
             return View(s);
+        }
+        [HttpPost]
+        public IActionResult Add(SessionModel s)
+        {
+            s.Date = DateTime.Now;
+            context.Sessions.Add(s);
+            context.SaveChanges();
+
+            return View("Index");
         }
         public IActionResult AddChar(SessionModel s)
         {

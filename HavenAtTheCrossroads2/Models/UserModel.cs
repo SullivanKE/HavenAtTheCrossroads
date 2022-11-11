@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HavenAtTheCrossroads.Models
 {
     public class UserModel
     {
+        [Key]
         public int UserId { get; set; }
         public string UserName { get; set; }
         public enum RoleType

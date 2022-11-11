@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HavenAtTheCrossroads.Models
 {
     public class MonsterModel
     {
+        [Key]
         public int SessionId { get; set; }
         public string Name { get; set; } = "";
 
